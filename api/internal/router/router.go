@@ -19,9 +19,9 @@ func ping(ctx *gin.Context) {
 func New(app *state.AppState) *gin.Engine {
 	r := gin.Default()
 
-    if err := validator.BindValidators(); err != nil {
-        panic("can not bind validators")
-    }
+	if err := validator.BindValidators(); err != nil {
+		panic("can not bind validators")
+	}
 
 	r.GET("/ping", ping)
 

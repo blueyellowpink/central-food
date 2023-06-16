@@ -24,39 +24,39 @@ func AddAuthRoutes(rg *gin.RouterGroup, app *state.AppState) {
 }
 
 type SignUp struct {
-    Username string `json:"username" binding:"required"`
-    Password string `json:"password" binding:"required"`
-    Email string `json:"email" binding:"required,isEmail"`
+	Username string `json:"username" binding:"required"`
+	Password string `json:"password" binding:"required"`
+	Email    string `json:"email" binding:"required,isEmail"`
 }
 
 func (c *AuthController) signUp(ctx *gin.Context) {
-    var params SignUp
+	var params SignUp
 
-    if err := ctx.BindJSON(&params); err != nil {
-        ctx.JSON(http.StatusBadRequest, err.Error())
-        return
-    }
+	if err := ctx.BindJSON(&params); err != nil {
+		ctx.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
 
-    if _, err := c.svc.signUp(&params); err != nil {
-        ctx.JSON(http.StatusBadRequest, "Error")
-        return
-    }
+	if _, err := c.svc.signUp(&params); err != nil {
+		ctx.JSON(http.StatusBadRequest, "Error")
+		return
+	}
 
 	ctx.JSON(http.StatusOK, params)
 }
 
 type SignIn struct {
-    Username string `json:"username" binding:"required"`
-    Password string `json:"password" binding:"required"`
+	Username string `json:"username" binding:"required"`
+	Password string `json:"password" binding:"required"`
 }
 
 func (c *AuthController) signIn(ctx *gin.Context) {
-    var params SignIn
+	var params SignIn
 
-    if err := ctx.BindJSON(&params); err != nil {
-        ctx.JSON(http.StatusBadRequest, "Error Bind JSON")
-        return
-    }
+	if err := ctx.BindJSON(&params); err != nil {
+		ctx.JSON(http.StatusBadRequest, "Error Bind JSON")
+		return
+	}
 
 	// c.svc.signIn()
 	ctx.JSON(http.StatusOK, params)

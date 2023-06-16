@@ -1,9 +1,9 @@
 package state
 
 import (
-    "gorm.io/gorm"
+	"gorm.io/gorm"
 
-    "db"
+	"db"
 )
 
 type AppState struct {

@@ -3,8 +3,8 @@ package auth
 import "db"
 
 type AuthRepo interface {
-    Create()
-    GetByUsername()
+	Create()
+	GetByUsername()
 }
 
 var _ AuthRepo = (*AuthRepoImpl)(nil)

@@ -1,6 +1,6 @@
 package db
 
 type Database[T any] interface {
-    Inner() T
-    Migrate(any) error
+	Inner() T
+	Migrate(any) error
 }
