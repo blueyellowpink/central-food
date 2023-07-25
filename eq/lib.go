@@ -16,5 +16,5 @@ type Producer[T any] interface {
 type Consumer[T any] interface {
 	Inner() *T
 	Close()
-	Subscribe([]string, chan bool)
+	Subscribe(topics []string, handler chan bool)
 }
